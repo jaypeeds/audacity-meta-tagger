@@ -2,7 +2,7 @@ import urllib2, json, sys
 
 release_id = int(sys.argv[1])
 opener = urllib2.build_opener()
-opener.addheaders = [('User-Agent', 'AudacityTaggerApp/3.0')]
+opener.addheaders = [('User-Agent', 'AudacityMetaTaggerApp/3.0')]
 release = json.load(opener.open('https://api.discogs.com/releases/{}'.format(release_id)))
 
 for artist in release['artists']:
