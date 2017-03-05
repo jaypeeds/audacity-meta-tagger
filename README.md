@@ -1,5 +1,5 @@
 # audacity-meta-tagger
-Script to generate tracks XML metadata to be used for Audacity multiple file export
+Script to generate tracks XML metadata to be used for Audacity multiple file export. 
 If duration values are available they are used to generate a labels file for each side of the record, otherwise a standard length of 3 minutes is assumed, but generated file must be adjusted.
 
 Usage
