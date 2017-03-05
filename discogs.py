@@ -20,7 +20,6 @@ year= release['year']
 for genre in release['genres']:
 	gname = genre
 
-offset = 0 
 for track in release['tracklist']:
 	ttitle = track['title']
 	tposition = track['position']
