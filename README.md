@@ -12,12 +12,12 @@ Usage
 
 Typical output
 --------------
-$ ./discogs.py 385671                       
-Keith Jarrett-The Köln Concert-A.xml
-New face: labels for face A in Keith Jarrett-The Köln Concert-A.txt
-Keith Jarrett-The Köln Concert-B.xml
-New face: labels for face B in Keith Jarrett-The Köln Concert-B.txt
-Keith Jarrett-The Köln Concert-C.xml
-New face: labels for face C in Keith Jarrett-The Köln Concert-C.txt
-Keith Jarrett-The Köln Concert-D.xml
-Last face: labels for face D in Keith Jarrett-The Köln Concert-D.txt
+      $ ./discogs.py 385671                       
+      Keith Jarrett-The Köln Concert-A.xml
+      New face: labels for face A in Keith Jarrett-The Köln Concert-A.txt
+      Keith Jarrett-The Köln Concert-B.xml
+      New face: labels for face B in Keith Jarrett-The Köln Concert-B.txt
+      Keith Jarrett-The Köln Concert-C.xml
+      New face: labels for face C in Keith Jarrett-The Köln Concert-C.txt
+      Keith Jarrett-The Köln Concert-D.xml
+      Last face: labels for face D in Keith Jarrett-The Köln Concert-D.txt
