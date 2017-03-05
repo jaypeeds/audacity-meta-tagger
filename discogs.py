@@ -1,8 +1,15 @@
+#!/usr/bin/env python
+
 import urllib2, json, sys
 
+if len(sys.argv) < 2:
+     raise RuntimeError('USAGE: %s <discogs release id>')
+ 
 release_id = int(sys.argv[1])
+
 opener = urllib2.build_opener()
-opener.addheaders = [('User-Agent', 'AudacityMetaTaggerApp/3.0')]
+opener.addheaders = [('User-Agent', 'AudacityTaggerApp/3.0'), ('Content-Encoding', 'gzip')]
+
 release = json.load(opener.open('https://api.discogs.com/releases/{}'.format(release_id)))
 
 for artist in release['artists']:
@@ -13,23 +20,12 @@ year= release['year']
 for genre in release['genres']:
 	gname = genre
 
-asize = 0
+offset = 0 
 for track in release['tracklist']:
 	ttitle = track['title']
-	chars = list(track['position'])
-	if len(chars) == 2:
-		[face, pos] = chars
-	else:
-		[face, pos10, pos ] = chars
-		pos = 10 * int(pos10) + int(pos)
-
-	if face == 'A':
-		tposition = pos
-		asize += 1
-	else:
-		tposition = asize + int(pos)
-
+	tposition = track['position']
 	file_name = '{}-{}-{}.xml'.format(aname,album,tposition)
+	print file_name
 	file_io = open(file_name, 'w')
 	file_io.write( '<tags>\n' )
 	file_io.write( '\t<tag name="GENRE" value="{}"/>\n'.format(gname) )
