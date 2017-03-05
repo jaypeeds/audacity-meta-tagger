@@ -6,8 +6,9 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 if len(sys.argv) < 2:
-     raise RuntimeError('USAGE: %s <discogs release id>')
- 
+        sys.stderr.write('Usage: {} <release ID>\n'.format(sys.argv[0]))
+        sys.exit(1)
+
 release_id = int(sys.argv[1])
 
 opener = urllib2.build_opener()
