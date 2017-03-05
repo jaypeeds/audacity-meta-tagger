@@ -6,7 +6,7 @@ Usage
 ------
 - Go to discogs.com site and search for the album you are digitizing
   - Many releases are available
-  - Select you release
+  - Select your release
   - The release page URL ends with the release ID
 - Use that ID on the command line: python discogs.py release_ID
 
