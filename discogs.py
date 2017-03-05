@@ -2,6 +2,9 @@
 
 import urllib2, json, sys
 
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 if len(sys.argv) < 2:
      raise RuntimeError('USAGE: %s <discogs release id>')
  
@@ -9,8 +12,9 @@ release_id = int(sys.argv[1])
 
 opener = urllib2.build_opener()
 opener.addheaders = [('User-Agent', 'AudacityTaggerApp/3.0'), ('Content-Encoding', 'gzip')]
+json_response = opener.open('https://api.discogs.com/releases/{}'.format(release_id)) 
 
-release = json.load(opener.open('https://api.discogs.com/releases/{}'.format(release_id)))
+release = json.load(json_response)
 
 for artist in release['artists']:
 	aname = artist['name']
