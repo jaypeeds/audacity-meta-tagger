@@ -29,6 +29,9 @@ last_face = ''
 end_ts = 0.0
 labels = []
 for track in release['tracklist']:
+    if track['type_'] != 'track':
+        continue
+    else:
 	tposition = track['position']	
 	ttitle = track['title']
 	tduration = track['duration']
