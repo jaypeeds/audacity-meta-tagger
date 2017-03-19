@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import urllib2, json, sys
+import cgi, urllib2, json, sys
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -71,12 +71,12 @@ for track in release['tracklist']:
 	print track_file_name
 	track_io = open(track_file_name, 'w')
 	track_io.write( '<tags>\n' )
-	track_io.write( '\t<tag name="GENRE" value="{}"/>\n'.format(gname) )
-	track_io.write( '\t<tag name="TITLE" value="{}"/>\n'.format(ttitle))
-	track_io.write( '\t<tag name="TRACKNUMBER" value="{}"/>\n'.format(tposition) )
-	track_io.write( '\t<tag name="ALBUM" value="{}"/>\n'.format(album) )
+	track_io.write( '\t<tag name="GENRE" value="{}"/>\n'.format(cgi.escape(gname)) )
+	track_io.write( '\t<tag name="TITLE" value="{}"/>\n'.format(cgi.escape(ttitle)) )
+	track_io.write( '\t<tag name="TRACKNUMBER" value="{}"/>\n'.format(cgi.escape(tposition)) )
+	track_io.write( '\t<tag name="ALBUM" value="{}"/>\n'.format(cgi.escape(album)) )
 	track_io.write( '\t<tag name="YEAR" value="{}"/>\n'.format(year) )
-	track_io.write( '\t<tag name="ARTIST" value="{}"/>\n'.format(aname) )
+	track_io.write( '\t<tag name="ARTIST" value="{}"/>\n'.format(cgi.escape(aname)) )
 	track_io.write( '</tags>\n' )
 	track_io.close()
 
