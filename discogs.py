@@ -69,13 +69,14 @@ for track in release['tracklist']:
 
 	labels.append('{}\t{}\t{}'.format(start_ts, end_ts, ttitle))
 	
-	track_file_name = '{}-{}-{}.xml'.format(aname,album,offset + int(tposition[1]))
+	track_number = offset + int(tposition[1])
+	track_file_name = '{}-{}-{}.xml'.format(aname,album,track['position'])
 	print track_file_name
 	track_io = open(track_file_name, 'w')
 	track_io.write( '<tags>\n' )
 	track_io.write( '\t<tag name="GENRE" value="{}"/>\n'.format(cgi.escape(gname)) )
 	track_io.write( '\t<tag name="TITLE" value="{}"/>\n'.format(cgi.escape(ttitle)) )
-	track_io.write( '\t<tag name="TRACKNUMBER" value="{}"/>\n'.format(offset + int(tposition[1])) )
+	track_io.write( '\t<tag name="TRACKNUMBER" value="{}"/>\n'.format(track_number) )
 	track_io.write( '\t<tag name="ALBUM" value="{}"/>\n'.format(cgi.escape(album)) )
 	track_io.write( '\t<tag name="YEAR" value="{}"/>\n'.format(year) )
 	track_io.write( '\t<tag name="ARTIST" value="{}"/>\n'.format(cgi.escape(aname)) )
