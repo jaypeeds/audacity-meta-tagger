@@ -28,16 +28,15 @@ for genre in release['genres']:
 last_face = ''
 end_ts = 0.0
 labels = []
+offset = 0
 for track in release['tracklist']:
     if track['type_'] != 'track':
         continue
     else:
-	tposition = track['position']	
+	tposition = [track['position'][0], track['position'][1:]]	
 	ttitle = track['title']
 	tduration = track['duration']
 	tface = list(tposition)[0]
-
-	track_file_name = '{}-{}-{}.xml'.format(aname,album,tposition)
 
 
 	if tduration != '':
@@ -58,6 +57,7 @@ for track in release['tracklist']:
 				labels_io.write('{}\n'.format(label))
 
 		if last_face != '':
+			offset = len(labels)
 			labels_io.close()
 
 		labels = []
@@ -68,12 +68,14 @@ for track in release['tracklist']:
 	end_ts += 60.0 * float(mm) + float(ss)  
 
 	labels.append('{}\t{}\t{}'.format(start_ts, end_ts, ttitle))
+	
+	track_file_name = '{}-{}-{}.xml'.format(aname,album,offset + int(tposition[1]))
 	print track_file_name
 	track_io = open(track_file_name, 'w')
 	track_io.write( '<tags>\n' )
 	track_io.write( '\t<tag name="GENRE" value="{}"/>\n'.format(cgi.escape(gname)) )
 	track_io.write( '\t<tag name="TITLE" value="{}"/>\n'.format(cgi.escape(ttitle)) )
-	track_io.write( '\t<tag name="TRACKNUMBER" value="{}"/>\n'.format(cgi.escape(tposition)) )
+	track_io.write( '\t<tag name="TRACKNUMBER" value="{}"/>\n'.format(offset + int(tposition[1])) )
 	track_io.write( '\t<tag name="ALBUM" value="{}"/>\n'.format(cgi.escape(album)) )
 	track_io.write( '\t<tag name="YEAR" value="{}"/>\n'.format(year) )
 	track_io.write( '\t<tag name="ARTIST" value="{}"/>\n'.format(cgi.escape(aname)) )
