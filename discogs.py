@@ -57,7 +57,7 @@ for track in release['tracklist']:
 				labels_io.write('{}\n'.format(label))
 
 		if last_face != '':
-			offset = len(labels)
+			offset += len(labels)
 			labels_io.close()
 
 		labels = []
