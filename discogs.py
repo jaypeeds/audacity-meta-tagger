@@ -81,6 +81,7 @@ for track in release['tracklist']:
 	track_io.write( '\t<tag name="YEAR" value="{}"/>\n'.format(year) )
 	track_io.write( '\t<tag name="ARTIST" value="{}"/>\n'.format(cgi.escape(aname)) )
 	track_io.write( '</tags>\n' )
+	track_io.write( '<!-- Generated from discogs release ID {} -->\n'.format(release_id) )
 	track_io.close()
 
 labels_file_name = '{}-{}-{}.txt'.format(aname,album,last_face)
