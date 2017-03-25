@@ -68,8 +68,13 @@ for track in release['tracklist']:
 	end_ts += 60.0 * float(mm) + float(ss)  
 
 	labels.append('{}\t{}\t{}'.format(start_ts, end_ts, ttitle))
-	
-	track_number = offset + int(tposition[1])
+    	# Records like Keith Jarrett's Koeln Concert have one track per face: A, B, C, D
+    	# So A is equivalent to A1
+    	try:	
+        	track_number = offset + int(tposition[1])
+    	except:
+        	track_number = offset + 1
+        
 	track_file_name = '{}-{}-{}.xml'.format(aname,album,track['position'])
 	print track_file_name
 	track_io = open(track_file_name, 'w')
@@ -91,5 +96,3 @@ for label in labels:
 	labels_io.write('{}\n'.format(label))
 
 labels_io.close()
-
-
