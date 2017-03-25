@@ -68,7 +68,7 @@ for track in release['tracklist']:
 	end_ts += 60.0 * float(mm) + float(ss)  
 
 	labels.append('{}\t{}\t{}'.format(start_ts, end_ts, ttitle))
-    	# Records like Keith Jarrett's Koeln Concert have one track per face: A, B, C, D
+    	# Such records as Keith Jarrett's Koeln Concert have one track per face: A, B, C, D
     	# So A is equivalent to A1
     	try:	
         	track_number = offset + int(tposition[1])
