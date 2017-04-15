@@ -19,10 +19,10 @@ def track_name_to_number(tname):
         return int(tname)
     else:
         if '.' in tname:
-            label = list(tname.split('.')[1])
+            name = list(tname.split('.')[1])
         else:
-            label = list(tname)
-        return ord(label[0]) - ord('a') + 1
+            name = list(tname)
+        return ord(name[0]) - ord('a') + 1
 
 
 def process_track(track):
