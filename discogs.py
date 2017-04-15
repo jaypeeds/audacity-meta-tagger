@@ -15,6 +15,10 @@ labels = []
 offset = 0
 
 def track_name_to_number(tname):
+    # Valid names:
+    # A
+    # A1
+    # A.a
     if tname.isnumeric():
         return int(tname)
     else:
