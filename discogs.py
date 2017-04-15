@@ -114,6 +114,8 @@ if __name__ == '__main__':
             sub_tracks = track['sub_tracks']
             for sub_track in sub_tracks:
                 process_track(sub_track)
+	else:
+	    continue
 
     labels_file_name = '{}-{}-{}.txt'.format(aname,album,last_face)
     print 'Last face: labels for face {} in {}'.format(last_face, labels_file_name)
