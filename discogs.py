@@ -51,7 +51,7 @@ def process_track(track):
 	if tface != last_face:
 		if last_face != '':
 			labels_file_name = '{}-{}-{}.txt'.format(aname,album,last_face)
-			print 'New face: labels for face {} in {}'.format(last_face, labels_file_name)
+			print 'New side: labels for face {} in {}'.format(last_face, labels_file_name)
 			labels_io = open(labels_file_name, 'w')
 
 		
@@ -122,7 +122,7 @@ if __name__ == '__main__':
 	    continue
 
     labels_file_name = '{}-{}-{}.txt'.format(aname,album,last_face)
-    print 'Last face: labels for face {} in {}'.format(last_face, labels_file_name)
+    print 'Last side: labels for face {} in {}'.format(last_face, labels_file_name)
     labels_io = open(labels_file_name, 'w')
     for label in labels:
             labels_io.write('{}\n'.format(label))
