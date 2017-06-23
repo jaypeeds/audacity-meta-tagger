@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-import cgi, urllib2, json, sys
+import urllib2, json, sys
+from xml.sax.saxutils import escape
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -13,6 +14,9 @@ last_side = ''
 end_ts = 0.0
 labels = []
 offset = 0
+
+def quote_escape(text):
+    return escape(text, {"'": "&apos;", '"': "&quot;"})
 
 def track_name_to_number(tname):
     # Valid names:
@@ -82,15 +86,16 @@ def process_track(track):
 	print track_file_name
 	track_io = open(track_file_name, 'w')
 	track_io.write( '<tags>\n' )
-	track_io.write( '\t<tag name="GENRE" value="{}"/>\n'.format(cgi.escape(gname)) )
-	track_io.write( '\t<tag name="TITLE" value="{}"/>\n'.format(cgi.escape(ttitle)) )
+	track_io.write( '\t<tag name="GENRE" value="{}"/>\n'.format(quote_escape(gname)) )
+	track_io.write( '\t<tag name="TITLE" value="{}"/>\n'.format(quote_escape(ttitle)) )
 	track_io.write( '\t<tag name="TRACKNUMBER" value="{}"/>\n'.format(track_number) )
-	track_io.write( '\t<tag name="ALBUM" value="{}"/>\n'.format(cgi.escape(album)) )
+	track_io.write( '\t<tag name="ALBUM" value="{}"/>\n'.format(quote_escape(album)) )
 	track_io.write( '\t<tag name="YEAR" value="{}"/>\n'.format(year) )
-	track_io.write( '\t<tag name="ARTIST" value="{}"/>\n'.format(cgi.escape(aname)) )
+	track_io.write( '\t<tag name="ARTIST" value="{}"/>\n'.format(quote_escape(aname)) )
 	track_io.write( '</tags>\n' )
 	track_io.write( '<!-- Generated from discogs release ID {} -->\n'.format(release_id) )
 	track_io.close()
+
 
 
 if __name__ == '__main__':
