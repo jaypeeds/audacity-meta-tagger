@@ -9,7 +9,7 @@ if len(sys.argv) < 2:
         sys.stderr.write('Usage: {} <release ID>\n'.format(sys.argv[0]))
         sys.exit(1)
 
-last_face = ''
+last_side = ''
 end_ts = 0.0
 labels = []
 offset = 0
@@ -31,7 +31,7 @@ def track_name_to_number(tname):
 
 def process_track(track):
 
-	global last_face
+	global last_side
         global end_ts
         global labels
         global offset
@@ -39,7 +39,7 @@ def process_track(track):
         tposition = [track['position'][0], track['position'][1:]]	
 	ttitle = track['title']
 	tduration = track['duration']
-	tface = list(tposition)[0]
+	tside = list(tposition)[0]
 
 
 	if tduration != '':
@@ -48,30 +48,30 @@ def process_track(track):
 		[mm, ss] = ['3', '0']
 	
 	
-	if tface != last_face:
-		if last_face != '':
-			labels_file_name = '{}-{}-{}.txt'.format(aname,album,last_face)
-			print 'New side: labels for face {} in {}'.format(last_face, labels_file_name)
+	if tside != last_side:
+		if last_side != '':
+			labels_file_name = '{}-{}-{}.txt'.format(aname,album,last_side)
+			print 'New side: labels for side {} in {}'.format(last_side, labels_file_name)
 			labels_io = open(labels_file_name, 'w')
 
 		
 		for label in labels:
-			if last_face != '':
+			if last_side != '':
 				labels_io.write('{}\n'.format(label))
 
-		if last_face != '':
+		if last_side != '':
 			offset += len(labels)
 			labels_io.close()
 
 		labels = []
-		last_face = tface
+		last_side = tside
 		end_ts = 0.0
 
 	start_ts = end_ts
 	end_ts += 60.0 * float(mm) + float(ss)  
 
 	labels.append('{}\t{}\t{}'.format(start_ts, end_ts, ttitle))
-    	# Such records as Keith Jarrett's Koeln Concert have one track per face: A, B, C, D
+    	# Such records as Keith Jarrett's Koeln Concert have one track per side: A, B, C, D
     	# So A is equivalent to A1
     	try:	
         	track_number = offset + track_name_to_number(tposition[1]) 
@@ -121,8 +121,8 @@ if __name__ == '__main__':
 	else:
 	    continue
 
-    labels_file_name = '{}-{}-{}.txt'.format(aname,album,last_face)
-    print 'Last side: labels for face {} in {}'.format(last_face, labels_file_name)
+    labels_file_name = '{}-{}-{}.txt'.format(aname,album,last_side)
+    print 'Last side: labels for side {} in {}'.format(last_side, labels_file_name)
     labels_io = open(labels_file_name, 'w')
     for label in labels:
             labels_io.write('{}\n'.format(label))
