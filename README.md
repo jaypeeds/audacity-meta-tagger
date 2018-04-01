@@ -21,3 +21,11 @@ Typical output
       New face: labels for face C in Keith Jarrett-The Köln Concert-C.txt
       Keith Jarrett-The Köln Concert-D.xml
       Last face: labels for face D in Keith Jarrett-The Köln Concert-D.txt
+      
+      $ ./discogs_search.py "Miles Davis" "Milestones"
+      4059352
+      6141884
+      5804658
+      2705067
+      5783056
+
