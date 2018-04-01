@@ -12,20 +12,20 @@ Usage
 
 Typical output
 --------------
-      $ ./discogs.py 385671                       
-      Keith Jarrett-The Köln Concert-A.xml
-      New face: labels for face A in Keith Jarrett-The Köln Concert-A.txt
-      Keith Jarrett-The Köln Concert-B.xml
-      New face: labels for face B in Keith Jarrett-The Köln Concert-B.txt
-      Keith Jarrett-The Köln Concert-C.xml
-      New face: labels for face C in Keith Jarrett-The Köln Concert-C.txt
-      Keith Jarrett-The Köln Concert-D.xml
-      Last face: labels for face D in Keith Jarrett-The Köln Concert-D.txt
-      
-      $ ./discogs_search.py "Miles Davis" "Milestones"
-      4059352
-      6141884
-      5804658
-      2705067
-      5783056
+      $ ./discogs_search.py "Keith Jarrett" "Koln concert"
+      4788677
+      6988028
+      9346057
+      11563070
+      11542483
 
+      $ ./discogs.py 4788677
+      Keith Jarrett-The Köln Concert-1.xml
+      New face: labels for face 1 in Keith Jarrett-The Köln Concert-1.txt
+      Keith Jarrett-The Köln Concert-2.xml
+      New face: labels for face 2 in Keith Jarrett-The Köln Concert-2.txt
+      Keith Jarrett-The Köln Concert-3.xml
+      New face: labels for face 3 in Keith Jarrett-The Köln Concert-3.txt
+      Keith Jarrett-The Köln Concert-4.xml
+      Last face: labels for face 4 in Keith Jarrett-The Köln Concert-4.txt
+      
