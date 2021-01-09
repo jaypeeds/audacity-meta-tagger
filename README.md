@@ -21,11 +21,11 @@ Typical output
 
       $ ./discogs.py 4788677
       Keith Jarrett-The Köln Concert-1.xml
-      New face: labels for face 1 in Keith Jarrett-The Köln Concert-1.txt
+      New side: labels for side 1 in Keith Jarrett-The Köln Concert-1.txt
       Keith Jarrett-The Köln Concert-2.xml
-      New face: labels for face 2 in Keith Jarrett-The Köln Concert-2.txt
+      New side: labels for side 2 in Keith Jarrett-The Köln Concert-2.txt
       Keith Jarrett-The Köln Concert-3.xml
-      New face: labels for face 3 in Keith Jarrett-The Köln Concert-3.txt
+      New side: labels for side 3 in Keith Jarrett-The Köln Concert-3.txt
       Keith Jarrett-The Köln Concert-4.xml
-      Last face: labels for face 4 in Keith Jarrett-The Köln Concert-4.txt
+      Last side: labels for side 4 in Keith Jarrett-The Köln Concert-4.txt
       
